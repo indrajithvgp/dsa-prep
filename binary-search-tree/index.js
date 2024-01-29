@@ -1,13 +1,13 @@
 class Node {
   constructor(val) {
-    this.prev = null;
+    this.left = null;
     this.val = val;
-    this.next = null;
+    this.right = null;
   }
 }
 
 class BST {
-  constructor(val) {
+  constructor() {
     this.root = null;
   }
   find(val) {
@@ -26,7 +26,10 @@ class BST {
   }
   insert(val) {
     let newNode = new Node(val);
-    if (!this.root) return new Node(val);
+    if (!this.root) {
+      this.root = new Node(val);
+      return this;
+    }
     let tempNode = this.root;
     while (true) {
       if (val === tempNode.val) return false;
@@ -47,6 +50,9 @@ class BST {
   }
 }
 
-const bst = new BST(10);
-bst.push(11);
+const bst = new BST();
+bst.insert(11);
+bst.insert(13);
+bst.insert(12);
+bst.insert(14);
 console.log(bst);
